@@ -1,0 +1,75 @@
+<html>
+ <head>
+  
+<meta charset="utf-8">
+   <!-- подключаем все необходимое -->
+   <link rel="stylesheet" href="style.css"><link>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+   <script src="rorate.js"></script>
+ </head>
+<audio id="audio" src="url" controls="controls"></audio>
+<img onclick="start()" id="spin" src="spin.png">
+<br />
+<br /> <br />
+<div id="mes">
+Push!!!!
+<noscript>Oh! Js error :-( Try to switch on JavaScript</noscript>
+</div>
+<button onclick="stop()">Stop</button>
+<script>
+var grad,limit,sec,min;
+spin=0;
+grad=0;
+//градусы поворота изображения
+limit=0;
+//лимит кручения 
+sec=0;
+//секунды
+min=0;
+//минуты
+function start(){
+spin++;
+time=setInterval("main()",100);
+if(spin==1) {
+/*если зарегистрирован только 1 клик по кнопке старт отсчета,
+то запускаем музыку и таймер */
+var audio=document.getElementById("audio");
+audio.src="a.mp3";
+audio.play();
+secun=setInterval("t()",1000);
+ }
+}
+function main(){
+//был arg limit
+limit+=0.1;
+grad+=10;
+//увеличиваем градусы
+if(limit>=300){
+//лимит по кручению достигнут
+//остановка музыки:
+audio.pause();
+audio.currentTime=0.0;
+//стоп секундомер:
+clearInterval(secun);
+//не выполняем главное:
+clearInterval(time);
+}
+$('#spin').css('rotate', grad);
+ //поворот изображения
+ }
+function stop(){
+window.open("index.html","_self");
+}
+function t(){
+ sec++;
+if(sec>59){
+   sec=0;
+   min++; 
+}
+document.getElementById("mes").innerHTML=" Spinning... " + min + ":" + sec;
+}
+</script>
+<br />
+<b>by Marat Nagayev</b><br />
+<div id="sec"></div>
+</html>
