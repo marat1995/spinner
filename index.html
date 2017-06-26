@@ -18,15 +18,11 @@ Push!!!!
 <button onclick="stop()">Stop</button>
 <script>
 var grad,limit,sec,min;
-spin=0;
-grad=0;
-//градусы поворота изображения
-limit=0;
-//лимит кручения 
-sec=0;
-//секунды
-min=0;
-//минуты
+spin=0; //кол-во кручений спиннера
+grad=0; //градусы поворота изображения
+limit=0; //лимит кручения 
+sec=0; //секунды
+min=0; //минуты
 function start(){
 spin++;
 time=setInterval("main()",100);
@@ -37,38 +33,35 @@ var audio=document.getElementById("audio");
 audio.src=prompt("Введите url");
 audio.src=(audio.src=="")?a.mp3:audio.src; //если ничего не введено но ставим a.mp3
 audio.play();
-secun=setInterval("t()",1000);
+secun=setInterval("t()",1000); //запуск секундомера
  }
 }
 function main(){
 //был arg limit
-limit+=0.1;
+limit+=0.1; //увеличиваем лимит
 grad+=10; //увеличиваем градусы
 if(limit>=300){
  //лимит по кручению достигнут
 audio.pause(); //остановка музыки
 audio.currentTime=0.0; //время на 0
-//стоп секундомер:
-clearInterval(secun);
-//не выполняем главное:
-clearInterval(time);
+clearInterval(secun); //стоп секундомер
+clearInterval(time); //стоп main
 }
-$('#spin').css('rotate', grad);
- //поворот изображения
+$('#spin').css('rotate', grad); //поворот изображения
  }
 function stop(){
-window.open("index.html","_self");
+window.open("index.html","_self"); //открываем себя же
 }
 function t(){
- sec++;
+ sec++; //прибавляем секунду
 if(sec>59){
    sec=0;
-   min++; 
+   min++; //прибавляем минуту
 }
-document.getElementById("mes").innerHTML=" Spinning... " + min + ":" + sec;
+document.getElementById("mes").innerHTML=" Spinning... " + min + ":" + sec; //inner время
 }
 </script>
 <br />
 <b>by Marat Nagayev</b><br />
-<div id="sec"></div>
+<div id="sec"></div> 
 </html>
