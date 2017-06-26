@@ -1,0 +1,10 @@
+//spinner
+#spin{
+weight:500px;
+height:500px;
+}
+//don't show player
+#audio{
+display:none;
+}
+
