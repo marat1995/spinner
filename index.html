@@ -34,7 +34,8 @@ if(spin==1) {
 /*если зарегистрирован только 1 клик по кнопке старт отсчета,
 то запускаем музыку и таймер */
 var audio=document.getElementById("audio");
-audio.src="a.mp3";
+audio.src=prompt("Введите url");
+audio.src=(audio.src=="")?a.mp3:audio.src; //если ничего не введено но ставим a.mp3
 audio.play();
 secun=setInterval("t()",1000);
  }
@@ -42,13 +43,11 @@ secun=setInterval("t()",1000);
 function main(){
 //был arg limit
 limit+=0.1;
-grad+=10;
-//увеличиваем градусы
+grad+=10; //увеличиваем градусы
 if(limit>=300){
-//лимит по кручению достигнут
-//остановка музыки:
-audio.pause();
-audio.currentTime=0.0;
+ //лимит по кручению достигнут
+audio.pause(); //остановка музыки
+audio.currentTime=0.0; //время на 0
 //стоп секундомер:
 clearInterval(secun);
 //не выполняем главное:
