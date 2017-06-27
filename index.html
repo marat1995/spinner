@@ -30,10 +30,10 @@ if(spin==1) {
 /*если зарегистрирован только 1 клик по кнопке старт отсчета,
 то запускаем музыку и таймер */
 var audio=document.getElementById("audio");
-audio.src=prompt("Введите url");
+audio.src=prompt("Введите url","a.mp3");
 audio.src=(audio.src=="")?a.mp3:audio.src; //если ничего не введено но ставим a.mp3
 audio.play();
-secun=setInterval("t()",1000); //запуск секундомера
+secun=setInterval("t()",2000); //запуск секундомера
  }
 }
 function main(){
@@ -53,7 +53,7 @@ function stop(){
 window.open("index.html","_self"); //открываем себя же
 }
 function t(){
- sec++; //прибавляем секунду
+ sec+=2; //прибавляем секунду
 if(sec>59){
    sec=0;
    min++; //прибавляем минуту
